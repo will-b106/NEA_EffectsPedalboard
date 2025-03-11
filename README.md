@@ -13,11 +13,14 @@ My plan moving forward is to create more effects pedals (distortion, looper etc)
    ```bash
    git clone https://github.com/will-b106/NEA_EffectsPedalboard.git
 2. Navigate to my project folder:
-   ```cd NEA_EffectsPedalboard
+   ```bash
+   cd NEA_EffectsPedalboard
 3. Install dependencies:
-   ```npm install
+   ```bash
+   npm install
 4. Start application:
-   ```npm start
+   ```bash
+   npm start
 5. Open your browser and go to http://localhost:3000
 
 I hope you enjoy the project! Any questions please reach out to me at willb061006@gmail.com 
