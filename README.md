@@ -1,5 +1,7 @@
 # Effects Pedalboard 
 
+![Project Screenshot](./images/projectCapture.jpeg)
+
 For my A-level Computer Science NEA Project, I decided to create a web-based digital effects pedalboard with reverb and delay effects. The purpose of this project was to help provide a solution to musicians having to deal with moving heavy and clunky pedalboards around, alongside all of the cabling that comes with it. 
 My project aims to solve that by creating a web-based pedalboard where users can enable real-time manipulation of their chosen audio source with reverb and delay effects.
 
