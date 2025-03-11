@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div id="fileInputContainer">
+    <input type="file" id="audioFileInput" style="display: none">
+    <button id="file-selectBtn">Choose file</button><span>No file chosen </span>
+  </div>
+
+  <!-- Instructions -->
+  <div id="instructions">
+    <h2>How to Use the Effects Pedals</h2>
+    <p>
+        Welcome to the audio effects pedal interface! Here's how to use it:
+    </p>
+    <ul>
+        <li><strong>Choose File</strong>: Click the "Choose File" button to choose an audio file to play. Then click the "Play File" button to play the audio file.</li>
+        <li><strong>Reverb Pedal</strong>: Adjust the "Effect Amount" and "Mix" knobs to control the reverb effect. Toggle the "On/Off" switch to enable or disable the effect.</li>
+        <li><strong>Delay Pedal</strong>: Adjust the "Effect Amount" and "Mix" knobs to control the delay effect. Toggle the "On/Off" switch to enable or disable the effect.</li>
+        <li><strong>Microphone Input</strong>: Click the "Enable Microphone" button to use your microphone as the audio source. Click the "Disable Microphone" button to stop using your microphone as the audio source.</li>
+        <li><strong>Resume Audio</strong>: If your microphone input doesn't seem to be working, refresh the page and then click the "Resume Audio" button. You should now hear your microphone input.</li>
+    </ul>
+  </div>
+
+<!-- Interactive Documentation Button -->
+<button id="showDocumentation">Show Documentation</button>
+
+  <!-- Modal Overlay -->
+<div id="overlay"></div>
+
+  <!-- Documentation Modal -->
+  <div id="documentationModal">
+      <h2>Effects Pedal Documentation</h2>
+      <button id="closeDocumentation">Close</button>
+      <div>
+          <h3>Reverb Pedal</h3>
+          <p>
+              The <strong>Reverb Pedal</strong> simulates the natural reverberation of a physical space.
+          </p>
+          <ul>
+              <li><strong>Effect Amount</strong>: Controls the intensity of the reverb effect.</li>
+              <li><strong>Mix</strong>: Adjusts the balance between the dry (original) and wet (reverberated) signal.</li>
+          </ul>
+
+          <h3>Delay Pedal</h3>
+          <p>
+              The <strong>Delay Pedal</strong> creates echoes of the input signal.
+          </p>
+          <ul>
+              <li><strong>Effect Amount</strong>: Controls the delay time (how long it takes for the echo to repeat).</li>
+              <li><strong>Mix</strong>: Adjusts the balance between the dry (original) and wet (delayed) signal.</li>
+          </ul>
+      </div>
+  </div>
+
+    <div id="pedalContainer">
+        <div class="pedalShape">
+            <div class="pedal-text">Audio Pedal</div>
+            <button id="playButton">Play File</button>
+            
+        </div>
+    </div>
+
+  <audio></audio>
+
+  <button id="resumeButton">Resume Audio</button>
+  <button id="permissionBtn">Enable Microphone</button>
+  <button id="stopMicBtn">Disable Microphone</button>
+
+  <script type="module" src="main.js"></script>
+  <script type="module" src="classes.js"></script>
+</body>
+
+</html>

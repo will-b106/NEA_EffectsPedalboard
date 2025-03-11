@@ -1,0 +1,395 @@
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: azure;
+}
+
+/* Overlay Styles */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    backdrop-filter: blur(5px); /* Blur effect */
+    z-index: 1000; /* Ensure it's above other content */
+    display: none; /* Hidden by default */
+}
+
+/* Pedal documentation styling */
+#documentationModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+    z-index: 1001; /* Ensure it stays on top of everything */
+    max-width: 600px;
+    width: 90%;
+    display: none; /* Hidden by default */
+}
+
+/* Show the overlay and modal when active */
+#overlay.active, #documentationModal.active {
+    display: block;
+}
+
+#documentationModal h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+#documentationModal p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+#documentationModal ul {
+    padding-left: 20px;
+}
+
+#documentationModal ul li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+#closeDocumentation {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#closeDocumentation:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}
+
+#showDocumentation {
+    position: absolute; /* Keep the button fixed in the viewport */
+    top: 20px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #04AA6D; /* Green background */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+#showDocumentation:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Pedalboard instructions styling */
+#instructions {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 600px;
+    width: 90%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#instructions h2 {
+    font-size: 24px;
+    color: #333;
+    margin-top: 0;
+}
+
+#instructions p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+#instructions ul {
+    padding-left: 20px;
+    text-align: left;
+}
+
+#instructions ul li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Contains all pedals (pedalboard) */
+#pedalContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 120px 20px 20px; /* Add top padding to avoid overlap */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.pedal {
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    position: relative;
+}
+
+.pedal-label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.pedal-knobs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+}
+
+.effect-knob, .mix-knob {
+    width: 80%;
+    margin: 5px 0;
+}
+
+.pedal-switch {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pedalButton {
+    display: inline-block;
+    background: red;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.checkbox {
+    display: none;
+}
+
+.checkbox:checked + .pedalButton {
+    background: green;
+}
+
+/* Audio Pedal Styling */
+#playButton {
+    width: 100px;
+    height: 50px;
+    background-color: #04AA6D; /* Green */
+    border-radius: 10px;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 27px;
+}
+
+.pedalShape {
+    height: 230px;
+    width: 230px;
+    background-color: #555; /* Grey */
+    position: relative; 
+    border-radius: 15px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pedalShape label {
+    font-size: 20px;
+    color: white;
+    font-family: sans-serif;
+}
+
+.pedal-text {
+    position: absolute;  
+    top: 20px;  
+    text-align: center;  
+    width: 100%; 
+    font-size: 20px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: white;
+    margin-top: 10px;
+}
+
+/* Reverb Pedal Styling */ 
+.pedal--Reverb {
+    background-color: #04AA6D;
+    height: 250px;
+    width: 200px;
+    position: relative;
+}
+
+#ReverbActive {
+    background-color: blue;
+}
+
+.h2 {
+    color: white;
+}
+
+/* File Input Button Styling */
+#audioFileInput {
+    display: none;
+}
+
+#fileInputContainer {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#file-selectBtn {
+    cursor: pointer;
+    border: none;
+    width: 80px;
+    height: 60px;
+    font-size: 18px;
+    background-color: #04AA6D;
+    margin-right: 100px;
+    color: white;
+    z-index: 10;   /* ensures button stays on top of other elements */
+    margin-right: 10px;
+}
+
+#file-selectBtn:hover {
+    background-color: #038a5a; /* Add a hover effect */
+}
+
+#file-selectBtn + span {
+    top: 40px;
+    left: 110px;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    #file-selectBtn {
+        width: 60px; /* Smaller button width */
+        height: 40px; /* Smaller button height */
+        font-size: 14px; /* Smaller font size */
+        top: 10px; /* Adjust position */
+        left: 10px; /* Adjust position */
+    }
+
+    #file-selectBtn + span {
+        top: 15px; /* Adjust position */
+        left: 80px; /* Adjust position */
+        font-size: 16px; /* Smaller font size */
+    }
+}
+
+#permissionBtn {
+    cursor: pointer;
+}
+
+#applyReverb {
+    cursor: pointer;
+}
+
+#applyDelay {
+    cursor: pointer;
+}
+
+#stopMicBtn {
+    cursor: pointer;
+}
+
+/* Delay Pedal Styling */ 
+.pedal--Delay {
+    background: #2c3e50;
+    height: 250px;
+    width: 200px;
+    position: relative;
+}
+
+/* General Button Styles */
+#resumeButton, #permissionBtn, #stopMicBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff; /* Blue background */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 5px; /* Space between buttons */
+}
+
+#resumeButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+#resumeButton:active {
+    transform: translateY(0); /* Reset lift when clicked */
+}
+
+#permissionBtn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+#permssionBtn:active {
+    transform: translateY(0); /* Reset lift when clicked */
+}
+
+#stopMicBtn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+#stopMicBtn:active {
+    transform: translateY(0); /* Reset lift when clicked */
+}
