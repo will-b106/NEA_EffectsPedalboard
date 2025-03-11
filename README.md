@@ -7,4 +7,17 @@ In my project you can enable your microphone access to apply the different effec
 
 My plan moving forward is to create more effects pedals (distortion, looper etc) to use and to introduce some interesting functionality such as enabling the user to save and retrieve their chosen pedal configurations using presets. The ideas I have for this project didn't end when I completed my NEA and handed it in for marking but have only expanded for the future. 
 
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/will-b106/NEA_EffectsPedalboard.git
+2. Navigate to my project folder:
+   ```cd NEA_EffectsPedalboard
+3. Install dependencies:
+   ```npm install
+4. Start application:
+   ```npm start
+5. Open your browser and go to http://localhost:3000
+
 I hope you enjoy the project! Any questions please reach out to me at willb061006@gmail.com 
